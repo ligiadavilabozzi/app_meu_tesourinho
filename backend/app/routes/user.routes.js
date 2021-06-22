@@ -29,4 +29,16 @@ module.exports = function (app) {
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.adminBoard
     );
+
+    app.get(
+        "/api/transactions", 
+        [authJwt.verifyToken], 
+        controller.getTransaction
+    )
+
+    app.get(
+        "api/user/:id/levelup", 
+        [authJwt.verifyToken],
+        controller.levelup
+    )
 };
